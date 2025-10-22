@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bheipjwcsxyus"]
+
+[ext_resource type="Texture2D" uid="uid://dm7m1j661hgxh" path="res://assets/npc.png" id="1_2dtys"]
+[ext_resource type="Script" uid="uid://cjgq4xbaki2lq" path="res://unit/click_player.gd" id="1_ju6pa"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ju6pa"]
+
+[node name="ClickPlayer" type="CharacterBody2D"]
+script = ExtResource("1_ju6pa")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_2dtys")
+region_enabled = true
+region_rect = Rect2(20, 0, 20, 26)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_ju6pa")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true

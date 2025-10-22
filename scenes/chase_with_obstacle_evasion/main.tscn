@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://dhxrujy20mjfc"]
+
+[ext_resource type="PackedScene" uid="uid://bnh0swl5uyesb" path="res://map/big_map.tscn" id="1_gwl82"]
+[ext_resource type="PackedScene" uid="uid://dvctxxl4xjira" path="res://unit/player.tscn" id="2_genef"]
+[ext_resource type="PackedScene" uid="uid://dabj4i63fwiai" path="res://unit/enemy.tscn" id="3_cj5t6"]
+[ext_resource type="PackedScene" uid="uid://633ptnl6vl43" path="res://unit/enemy_level2.tscn" id="4_cj5t6"]
+[ext_resource type="PackedScene" uid="uid://bwlax1q36ktcq" path="res://unit/ally.tscn" id="4_genef"]
+
+[node name="Main" type="Node2D"]
+
+[node name="BigMap" parent="." instance=ExtResource("1_gwl82")]
+metadata/_edit_lock_ = true
+
+[node name="player" parent="." instance=ExtResource("2_genef")]
+position = Vector2(51, 103)
+
+[node name="Ally" parent="." instance=ExtResource("4_genef")]
+position = Vector2(272, 112)
+
+[node name="EnemyLevel2" parent="." node_paths=PackedStringArray("target_palyer") instance=ExtResource("4_cj5t6")]
+position = Vector2(488, 75)
+target_palyer = NodePath("../player")
+
+[node name="enemy" parent="." node_paths=PackedStringArray("target_palyer") instance=ExtResource("3_cj5t6")]
+position = Vector2(482, 114)
+target_palyer = NodePath("../player")
+
+[node name="Ally2" parent="." instance=ExtResource("4_genef")]
+position = Vector2(375, 261)
+
+[node name="Ally3" parent="." instance=ExtResource("4_genef")]
+position = Vector2(171, 238)

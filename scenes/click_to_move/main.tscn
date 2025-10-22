@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://bghlx8bvgwm6q"]
+
+[ext_resource type="PackedScene" uid="uid://dy5qmn1cwppo" path="res://map/chase_map.tscn" id="1_bn0jn"]
+[ext_resource type="Script" uid="uid://c2he3tjplf7pe" path="res://scenes/click_to_move/main.gd" id="1_olr2h"]
+[ext_resource type="PackedScene" uid="uid://bheipjwcsxyus" path="res://unit/click_player.tscn" id="2_olr2h"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_olr2h")
+
+[node name="TileMapLayer" parent="." instance=ExtResource("1_bn0jn")]
+
+[node name="ClickPlayer" parent="." instance=ExtResource("2_olr2h")]
+position = Vector2(29, 45)

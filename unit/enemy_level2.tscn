@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://633ptnl6vl43"]
+
+[ext_resource type="Script" uid="uid://b8ty08hnnfqlx" path="res://unit/enemy_level_2.gd" id="1_oyiop"]
+[ext_resource type="Texture2D" uid="uid://dm7m1j661hgxh" path="res://assets/npc.png" id="2_5qr1n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5s7na"]
+
+[node name="EnemyLevel2" type="CharacterBody2D"]
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_oyiop")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_5qr1n")
+region_enabled = true
+region_rect = Rect2(0, 0, 20, 26)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_5s7na")
+
+[node name="Navigation" type="Node2D" parent="."]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Navigation"]
+target_desired_distance = 20.0
+avoidance_enabled = true
+time_horizon_obstacles = 2.0
+max_speed = 500.0
+debug_enabled = true
+
+[node name="Timer" type="Timer" parent="Navigation"]
+wait_time = 0.3
+autostart = true
+ignore_time_scale = true
+
+[connection signal="velocity_computed" from="Navigation/NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
+[connection signal="timeout" from="Navigation/Timer" to="." method="_on_timer_timeout"]
